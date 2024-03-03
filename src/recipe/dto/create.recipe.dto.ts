@@ -6,16 +6,19 @@ export class CreateRecipeDTO{
     // @IsString()
     // @MinLength(10)
     // @MaxLength(200)
-    name: string
+    title: string
 
     // @IsNotEmpty()
     // @IsString()
     // @MaxLength(3000)
     description: string
+    ingredient: string
+    createdAt: string
 
+    updatedAt: string
     // @IsNotEmpty()
     // @IsEnum(Priority)
     // @IsNotEmpty()
     // @IsString()
-    idUser: string
+    userId: string
 }
