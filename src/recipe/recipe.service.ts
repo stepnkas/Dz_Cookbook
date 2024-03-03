@@ -14,9 +14,12 @@ export class RecipeService {
     try {
       return await this.prismaService.recipe.create({
         data: {
-          name: data.name,
+          title: data.title,
           description: data.description,
-          idUser: data.idUser,
+          userId: data.userId,
+          updatedAt:data.updatedAt,
+          createdAt:data.createdAt,
+          ingredient:data.ingredient
         },
       });
     } catch (error) {
@@ -29,8 +32,11 @@ export class RecipeService {
       return await this.prismaService.recipe.update({
         where: { id: data.recipeId },
         data: {
-          name: data.name,
+          title: data.title,
           description: data.description,
+          updatedAt:data.updatedAt,
+          createdAt:data.createdAt,
+          ingredient:data.ingredient
         },
       });
     } catch (error) {
@@ -52,7 +58,7 @@ export class RecipeService {
       if (recipeId) {
         return this.prismaService.recipe.findFirst({ where: { id: recipeId } });
       } else {
-        return this.prismaService.recipe.findMany({ where: { idUser: userId } });
+        return this.prismaService.recipe.findMany({ where: { userId: userId } });
       }
     } catch (error) {}
   }
