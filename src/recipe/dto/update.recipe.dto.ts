@@ -2,10 +2,10 @@
 import { CreateRecipeDTO } from './create.recipe.dto';
 import { PartialType, OmitType } from '@nestjs/mapped-types';
 
-export class UpdateRecipeDTO extends PartialType(OmitType(CreateRecipeDTO, ['idUser'] as const),) {
+export class UpdateRecipeDTO extends PartialType(OmitType(CreateRecipeDTO, ['userId'] as const),) {
 
   // @IsString()
   // @IsNotEmpty()
-  recipeId: string;
+  recipeId: string
   
 }
