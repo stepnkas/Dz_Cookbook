@@ -22,8 +22,11 @@ model User {
 
 model Recipe {
   id String @id @default(uuid())
-  user User @relation(fields: [idUser],references: [id],onDelete: Cascade)
-  name String
+  user User @relation(fields: [userId],references: [id],onDelete: Cascade)
+  title String
   description String
-  idUser    String   @map("user_id")
+  createdAt String
+  ingredient String
+  updatedAt String
+  userId    String   @map("user_id")
 }
