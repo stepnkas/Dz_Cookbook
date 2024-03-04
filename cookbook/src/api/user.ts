@@ -3,6 +3,6 @@ import { api } from "./axiosInstance";
 
 export const setUserServerFx = createEffect(async (id: number) => {
     const idToString = id.toString()
-    const { data } = await api.post('api/cookbook/user/controll', { vkId: idToString });
+    const { data } = await api.post('api/recipe/user/controll', { vkId: idToString, name: 'test' });
     return data;
 });

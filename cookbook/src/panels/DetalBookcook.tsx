@@ -59,7 +59,7 @@ const RecipeDetails: React.FC<TaskRecipesProps> = ({ id, go }: any) => {
 
     const handleSaveButtonClick = async () => {
         const dataRecipe = {
-            cookbook: recipeId,
+            recipe: recipeId,
             title: editedTitle,
             descr: editedDescription,
             ingredient: editedIngredient
@@ -68,9 +68,10 @@ const RecipeDetails: React.FC<TaskRecipesProps> = ({ id, go }: any) => {
         setRecipe(updateRecipe);
         setIsEditing(false);
     };
+    
     return (
         <Panel id={id}>
-            <PanelHeader before={<PanelHeaderClose onClick={() => go({ currentTarget: { to: "home" } })} />} >
+            <PanelHeader before={<PanelHeaderClose onClick={() => go({ currentTarget: { dataset: { to: "home" } } })} />} >
                 Детали задачи
             </PanelHeader>
             <Div style={{ padding: "20px" }}>

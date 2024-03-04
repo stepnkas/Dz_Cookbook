@@ -11,11 +11,9 @@ export class CreateRecipeDTO{
     // @IsNotEmpty()
     // @IsString()
     // @MaxLength(3000)
-    description: string
+    descr: string
     ingredient: string
-    createdAt: string
 
-    updatedAt: string
     // @IsNotEmpty()
     // @IsEnum(Priority)
     // @IsNotEmpty()

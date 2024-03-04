@@ -11,15 +11,16 @@ export class RecipeService {
 
   //Здесь находится вся логика с ToDo карточками
   async CreateRecipe(data: CreateRecipeDTO) {
+    console.log(data)
     try {
       return await this.prismaService.recipe.create({
         data: {
           title: data.title,
-          description: data.description,
+          description: data.descr,
           userId: data.userId,
-          updatedAt:data.updatedAt,
-          createdAt:data.createdAt,
-          ingredient:data.ingredient
+          ingredient: data.ingredient,
+          updatedAt: '00',
+          createdAt: '00'
         },
       });
     } catch (error) {
@@ -29,14 +30,13 @@ export class RecipeService {
 
   async UpdateRecipe(data: UpdateRecipeDTO) {
     try {
+      console.log(data)
       return await this.prismaService.recipe.update({
         where: { id: data.recipeId },
         data: {
           title: data.title,
-          description: data.description,
-          updatedAt:data.updatedAt,
-          createdAt:data.createdAt,
-          ingredient:data.ingredient
+          description: data.descr,
+          ingredient: data.ingredient,
         },
       });
     } catch (error) {
@@ -87,11 +87,11 @@ export class RecipeService {
   }
 
   //Основной контроллер, скажем так, регистрации, мы создаем запись в нашей бд если юзера в ней нет, если есть, просто возвращаем его данные
-  async UserController(idVk: string,name:string) {
+  async UserController(data) {
     try {
-      const existUser = await this.GetUser(idVk);
+      const existUser = await this.GetUser(data.vkId);
       if (!existUser) {
-        return await this.CreateUser(idVk,name);
+        return await this.CreateUser(data.vkId, data.name);
       }
       return existUser;
     } catch (error) {}

@@ -30,6 +30,7 @@ export class RecipeController {
 
   @Put('update')
   async UpdateRecipeController(@Body() data: UpdateRecipeDTO) {
+    // console.log(data)
     return this.recipeService.UpdateRecipe(data);
   }
 
@@ -53,6 +54,7 @@ export class RecipeController {
 
   @Post('user/controll')
   async UserControllController(@Body() data: CreateUserDTO){
-    return this.recipeService.UserController(data.idVk,data.name)
+    console.log(data)
+    return await this.recipeService.UserController(data)
   }
 }

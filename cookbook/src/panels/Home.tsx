@@ -42,8 +42,7 @@ const Home = ({ id, go, fetchedUser }: Props) => {
       title: newRecipe,
       descr: newRecipeDiscription,
       ingredient: newRecipeIngredient,
-      priority: 'HEIGHT',
-      userId: '123POMENAT',
+      userId: userServer.id,
     };
 
     const dataRecipe: Recipe = await createRecipeFx(dataToCreatedNewRecipe);
@@ -67,12 +66,12 @@ const Home = ({ id, go, fetchedUser }: Props) => {
       <PanelHeader> Поворская книжка </PanelHeader>
       <FormLayoutGroup>
         <FormItem top='Новое блюдо'>
-          <Input type='text' value={newRecipe} onChange={(e) => setNewRecipe(e.target.value)} placeholder='Блюдо' required />
+          <Input type='text' value={newRecipe} onChange={(e: any) => setNewRecipe(e.target.value)} placeholder='Блюдо' required />
         </FormItem>
         <FormItem top="Способ приготовления">
           <Textarea value={newRecipeDiscription} onChange={(e) => setNewRecipeDiscription(e.target.value)} placeholder='Способ приготовления' required />
         </FormItem>
-        <FormItem top="Способ приготовления">
+        <FormItem top="ингредиенты">
           <Textarea value={newRecipeIngredient} onChange={(e) => setNewRecipeIngredient(e.target.value)} placeholder='ингредиенты' required />
         </FormItem>
         <FormItem>
@@ -84,7 +83,7 @@ const Home = ({ id, go, fetchedUser }: Props) => {
       <Group>
         <CardGrid>
           {recipes.map((recipe) => (
-            <Card mode='shadow' key={recipe.id} onClick={() => { setRecipeId(recipe.id); go({ currentTarget: { dataset: { to: "recipedetails" } } }) }} >
+            <Card mode='shadow' key={recipe.id} onClick={() => { setRecipeId(recipe.id); go({ currentTarget: { dataset: { to: "detali" } } }) }} >
               <div style={{
                 padding: "16px",
                 maxHeight: "100px",
@@ -111,7 +110,7 @@ const Home = ({ id, go, fetchedUser }: Props) => {
                     textOverflow: "ellipsis",
                   }}
                 >
-                  { recipe.descr.length > 11 ? recipe.descr.substring(0, 11) + "..." : recipe.descr }
+                  { recipe?.descr?.length > 11 ? recipe.descr.substring(0, 11) + "..." : recipe.descr }
                 </div>
                 <div
                   style={{
