@@ -17,7 +17,7 @@ const RecipeDetails: React.FC<TaskRecipesProps> = ({ id, go }: any) => {
     const [recipe, setRecipe] = useState<Recipe | null>(null);
     const userServer = useUnit($userServer);
     const [editedTitle, setEditedTitle] = useState(recipe?.title || "");
-    const [editedDescription, setEditedDescription] = useState(recipe?.descr || "");
+    const [editedDescription, setEditedDescription] = useState(recipe?.description || "");
     const [editedIngredient, setEditedIngredient] = useState(recipe?.ingredient || "");
     const recipeId = useUnit($recipeId);
 
@@ -32,7 +32,7 @@ const RecipeDetails: React.FC<TaskRecipesProps> = ({ id, go }: any) => {
     useEffect(() => {
         if (recipe) {
             setEditedTitle(recipe?.title);
-            setEditedDescription(recipe?.descr);
+            setEditedDescription(recipe?.description);
             setEditedIngredient(recipe?.ingredient);
         }
     }, [recipe]);
@@ -59,9 +59,9 @@ const RecipeDetails: React.FC<TaskRecipesProps> = ({ id, go }: any) => {
 
     const handleSaveButtonClick = async () => {
         const dataRecipe = {
-            recipe: recipeId,
+            recipeId: recipeId,
             title: editedTitle,
-            descr: editedDescription,
+            description: editedDescription,
             ingredient: editedIngredient
         }
         const updateRecipe = await putOnerecipe(dataRecipe);
@@ -110,14 +110,14 @@ const RecipeDetails: React.FC<TaskRecipesProps> = ({ id, go }: any) => {
                     <>
                         <Div style={{ padding: 20 }}>
                             <Title level="3" style={{ padding: "20px 0px" }}>
-                                Название блюда: {recipe?.title}
+                                Название блюда: {editedTitle}
                             </Title>
                             <Separator />
                             <Text style={{ padding: "20px 0px" }}>
-                                Описание приготовления: {recipe?.descr}
+                                Описание приготовления: {editedDescription}
                             </Text>
                             <Text style={{ padding: "20px 0px" }}>
-                                Ингредиенты: {recipe?.ingredient}
+                                Ингредиенты: {editedIngredient}
                             </Text>
                         </Div>
                         <Div style={{ display: "flex", justifyContent: "space-between" }}>

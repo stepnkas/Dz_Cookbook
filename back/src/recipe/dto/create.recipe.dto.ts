@@ -11,7 +11,7 @@ export class CreateRecipeDTO{
     // @IsNotEmpty()
     // @IsString()
     // @MaxLength(3000)
-    descr: string
+    description: string
     ingredient: string
 
     // @IsNotEmpty()

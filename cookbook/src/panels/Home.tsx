@@ -40,7 +40,7 @@ const Home = ({ id, go, fetchedUser }: Props) => {
 
     const dataToCreatedNewRecipe: CreatedRecipe = {
       title: newRecipe,
-      descr: newRecipeDiscription,
+      description: newRecipeDiscription,
       ingredient: newRecipeIngredient,
       userId: userServer.id,
     };
@@ -99,7 +99,7 @@ const Home = ({ id, go, fetchedUser }: Props) => {
                     overflow: "hidden",
                   }}
                 >
-                  { recipe.title.length > 11 ? recipe.title.substring(0, 11) + "..." : recipe.title }
+                  { recipe.title.length > 7 ? recipe.title.substring(0, 7) + "..." : recipe.title }
                 </div>
                 <div
                   style={{
@@ -110,7 +110,7 @@ const Home = ({ id, go, fetchedUser }: Props) => {
                     textOverflow: "ellipsis",
                   }}
                 >
-                  { recipe?.descr?.length > 11 ? recipe.descr.substring(0, 11) + "..." : recipe.descr }
+                  { recipe?.description?.length > 7 ? recipe.description.substring(0, 7) + "..." : recipe.description }
                 </div>
                 <div
                   style={{
@@ -121,7 +121,7 @@ const Home = ({ id, go, fetchedUser }: Props) => {
                     textOverflow: "ellipsis",
                   }}
                 >
-                  { recipe.ingredient.length > 11 ? recipe.ingredient.substring(0, 11) + "..." : recipe.ingredient }
+                  { recipe.ingredient.length > 7 ? recipe.ingredient.substring(0, 7) + "..." : recipe.ingredient }
                 </div>
                 <Button before={<Icon24Delete />} onClick={(e) => {
                   e.stopPropagation();

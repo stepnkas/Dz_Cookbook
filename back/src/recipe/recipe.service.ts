@@ -16,7 +16,7 @@ export class RecipeService {
       return await this.prismaService.recipe.create({
         data: {
           title: data.title,
-          description: data.descr,
+          description: data.description,
           userId: data.userId,
           ingredient: data.ingredient,
           updatedAt: '00',
@@ -35,7 +35,7 @@ export class RecipeService {
         where: { id: data.recipeId },
         data: {
           title: data.title,
-          description: data.descr,
+          description: data.description,
           ingredient: data.ingredient,
         },
       });

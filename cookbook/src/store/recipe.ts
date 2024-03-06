@@ -14,4 +14,4 @@ $recipes.on(getRecipeFx.doneData, (_, recipes) => recipes);
 
 $recipes.on(filterRecipes, (recipes, recipeId) => recipes.filter((recipe) => recipe.id !== recipeId));
 
-$recipeId.on(setRecipeId, (_, recipesId) => recipesId);
+$recipeId.on(setRecipeId, (_, recipeId) => recipeId);

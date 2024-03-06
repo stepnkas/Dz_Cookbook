@@ -1,6 +1,6 @@
 export type CreatedRecipe = {
     title: string,
-    descr: string,
+    description: string,
     ingredient: string,
     userId: string,
     priority?: string
@@ -8,7 +8,7 @@ export type CreatedRecipe = {
 
 export type Recipe = {
     createdAt: string,
-    descr: string,
+    description: string,
     id: string,
     priority: string,
     ingredient: string,
